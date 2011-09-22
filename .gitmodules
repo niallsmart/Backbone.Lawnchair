@@ -1,0 +1,3 @@
+[submodule "lawnchair"]
+	path = lawnchair
+	url = https://github.com/brianleroux/lawnchair.git
