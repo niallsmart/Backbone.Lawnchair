@@ -1,28 +1,62 @@
 Backbone.sync = (function() {
 
-	/*
-	 * Generate 4 random hex digits.
-	 * 
-	 * Generating a random number between 0x20000 and 0x10000 and taking
-	 * the last four digits avoids having to explicitly left pad with 0.
-	 */
-	var hex4 = function() {
-		return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
-	};
+    var previous = Backbone.sync;
 
-	/*
-	 * Generate a random GUID.
-	 */
-	var makeGuid = function guid() {
-		return hex4() + hex4() + "-" + hex4() + "-" + hex4() + "-" + hex4() + "-" + hex4() + hex4() + hex4();
-	};
-	
-	var sync = function(model, op, data) {
-	}
+    var sync = function(method, model, options) {
 
-	/* provide a default implementation of makeGuid */
-	sync.makeGuid = makeGuid;
+        var store = model.lawnchair || model.collection.lawnchair;
 
-	return sync;
+        var callback = function(record) {
+
+            if (record == null) {
+                options.error("Record not found");
+                return
+            }
+
+            var keyToId = function(obj) {
+                obj.id = model.id || obj.key;   // workaround for Lawnchair issue #57
+                delete obj.key;
+            };
+
+            if (_.isArray(record)) {
+                _.each(record, keyToId);
+            } else {
+                keyToId(record);
+            }
+
+            options.success(record);
+        };
+
+        var json = model.toJSON();
+
+        json.key = model.id;
+        
+        delete json.id;
+
+        switch (method) {
+            case "read":
+                json.key ? store.get(json.key, callback) : store.all(callback);
+                break;
+            case "create":
+                resp = store.save(json, callback);
+                break;
+            case "update":
+                resp = store.save(json, callback);
+                break;
+            case "delete":
+                resp = store.remove(json.key, options.success);
+                break;
+        }
+
+        return null;
+    };
+
+    /*
+     * Expose the previous Backbone.sync as Backbone.sync.previous in case
+     * the caller wishes to switch provider.
+     */
+    sync.previous = previous;
+
+    return sync;
 
 })();
