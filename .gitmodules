@@ -1,3 +1,9 @@
 [submodule "lawnchair"]
 	path = lawnchair
 	url = https://github.com/brianleroux/lawnchair.git
+[submodule "qunit"]
+	path = qunit
+	url = https://github.com/jquery/qunit.git
+[submodule "backbone"]
+	path = backbone
+	url = https://github.com/documentcloud/backbone.git
