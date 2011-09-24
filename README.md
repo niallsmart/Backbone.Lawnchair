@@ -1,8 +1,8 @@
 # Backbone Lawnchair Adapter
 
-A drop-in implementation of `Backbone.sync` that uses a Lawnchair instance for client-side persistence.
+A drop-in implementation of `Backbone.sync` that uses a [Lawnchair](http://westcoastlogic.com/lawnchair/) instance for client-side persistence.
 
-[Lawnchair](http://westcoastlogic.com/lawnchair/) is a simple JSON storage engine that implements several legacy techniques for persistence. If you're using a modern browser that implements the DOM `localStorage` APIs, you should probably use [backbone.localStorage](https://github.com/jeromegn/Backbone.localStorage) instead.
+Lawnchair is a simple JSON storage engine that implements several legacy techniques for persistence. If you're using a modern browser that implements the DOM `localStorage` APIs, you should probably use [backbone.localStorage](https://github.com/jeromegn/Backbone.localStorage) instead.
 
 ## Usage
 
@@ -23,5 +23,5 @@ Then specify the Lawnchair instance to use for each collections like so:
   
 ## Credits
 
-Based on [backbone.localStorage](https://github.com/jeromegn/Backbone.localStorage) by Jerome Gravel-Niquet and others.
+Based on [Backbone.localStorage](https://github.com/jeromegn/Backbone.localStorage) by Jerome Gravel-Niquet and others.
 
