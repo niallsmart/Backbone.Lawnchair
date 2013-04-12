@@ -2,7 +2,7 @@
 
 A drop-in implementation of `Backbone.sync` that uses a [Lawnchair](http://westcoastlogic.com/lawnchair/) instance for client-side persistence.
 
-Lawnchair is a simple JSON storage engine that implements several legacy techniques for persistence. If you're using a modern browser that implements the DOM `localStorage` APIs, you should probably use [backbone.localStorage](https://github.com/jeromegn/Backbone.localStorage) instead.
+Lawnchair is a simple JSON storage engine that implements several legacy techniques for client-side persistence. If you're using a modern browser that implements the DOM localStorage APIs, you should probably use [backbone.localStorage](https://github.com/jeromegn/Backbone.localStorage) instead.
 
 ## Usage
 
