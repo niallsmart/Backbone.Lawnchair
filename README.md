@@ -17,7 +17,7 @@ Then specify the Lawnchair instance to use for each collections like so:
       
       lawnchair: = new Lawnchair({ name: "SomeCollection"}, new Function()), // Unique name within your app.
       
-      // ... everything else is normal.
+      // ... everything else stays the same
       
     });
   
